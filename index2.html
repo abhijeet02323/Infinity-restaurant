@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Business</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        @keyframes zoomEffect {
+          0% {
+                 transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+             100% {
+                transform: scale(1);
+        }
+        }
+
+        .hero-text {
+            font-size: 78px;
+            font-weight: bold;
+            align-self: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            animation: zoomEffect 2s infinite ease-in-out;
+        }
+
+        }
+        .hero-image img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .category-container {
+            border: none;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 90%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease-in-out, background-color 0.5s ease-in-out;
+            cursor: pointer;
+        }
+        .category-container:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .dish {
+            border-radius: 12px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            width: 220px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .dish:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .dish img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .add-to-cart {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .add-to-cart:hover {
+            background-color: #e64a19;
+        }
+
+        #checkout-container {
+            max-width: 400px;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px 25px;
+            margin: 30px auto;
+            font-family: 'Segoe UI', sans-serif;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #checkout-container h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        #cart-items {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        #cart-items li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ccc;
+            color: #444;
+            font-size: 16px;
+        }
+
+        #total-price {
+            font-size: 18px;
+            color: #2d8f53;
+            font-weight: bold;
+        }
+
+        #checkout-container button {
+            width: 100%;
+            padding: 10px 0;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease-in-out;
+        }
+
+        #checkout-container button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        
+    </header>
+    
+    <section class="hero-section">
+        <div align="center"class="hero-text">Welcome to Infinity Food World</div>
+        <div class="hero-image"><img src="food.jpg" alt="Restaurant"></div>
+    </section>
+    
+    <section id="menu" class="menu">
+        <div class="category-container">
+            <h2 align="center">Breakfast</h2>
+            <div class="menu-container">
+                <div class="dish">
+                    <img src="idli-sambhar.jpg" alt="Idli-Sambar">
+                    <h3>Idli-Sambar</h3>
+                    <p>Price: 70 Rs</p>
+                    <button class="add-to-cart" data-name="Idli-Sambar" data-price="70">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="dosa.jpg" alt="Masala Dosa">
+                    <h3>Masala Dosa</h3>
+                    <p>Price: 99 Rs</p>
+                    <button class="add-to-cart" data-name="Masala Dosa" data-price="99">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="meduvada.jpg" alt="Medu Vada">
+                    <h3>Medu Vada</h3>
+                    <p>Price: 70</p>
+                    <button class="add-to-cart" data-name="Medu Vada" data-price="70">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="upma.jpg" alt="Upma">
+                    <h3>Upma</h3>
+                    <p>Price: 50 Rs</p>
+                    <button class="add-to-cart" data-name="Upma" data-price="50">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="Cholebhature.jpg" alt="cholebhature">
+                    <h3>Chole Bhature</h3>
+                    <p>Price: 80 Rs</p>
+                    <button class="add-to-cart" data-name="cholebhature" data-price="80">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="menu" class="menu">
+        <div class="category-container">
+            <h2 align="center">Juice and Beverage</h2>
+            <div class="menu-container">
+                <div class="dish">
+                    <img src="fruit juice.jpg" alt="Mixed Fruit Juice">
+                    <h3>Mixed Fruit Juice</h3>
+                    <p>Price: 80 </p>
+                    <button class="add-to-cart" data-name="Mixed Fruit Juice" data-price="80">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="chocklate coffe date shake.jpg" alt="Chocolate Coffe Date Shake">
+                    <h3>Chocolate Coffee Date Shake</h3>
+                    <p>Price: 80 Rs</p>
+                    <button class="add-to-cart" data-name="Chocolate Coffe Date Shake" data-price="80">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="lassi.jpg" alt="Lassi">
+                    <h3>Lassi</h3>
+                    <p>Price: 40 Rs</p>
+                    <button class="add-to-cart" data-name="Lassi" data-price="40">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="badam milk shake.jpg" alt="Badam Milk Shake">
+                    <h3>Badam Milk Shake</h3>
+                    <p>Price: 50 Rs</p>
+                    <button class="add-to-cart" data-name="Badam Milk Shke" data-price="50">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="Faluda icecream.jpg" alt="Faluda Ice-Cream">
+                    <h3>Faluda Ice-Cream</h3>
+                    <p>Price: 80 Rs</p>
+                    <button class="add-to-cart" data-name="Faluda Ice-Cream" data-price="80">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="menu" class="menu">
+        <div class="category-container">
+            <h2 align="center">Paneers Magic</h2>
+            <div class="menu-container">
+                <div class="dish">
+                    <img src="paneer manch.jpg" alt="Idli-Sambar">
+                    <h3>Paneer Manchurian</h3>
+                    <p>Price: 120 Rs</p>
+                    <button class="add-to-cart" data-name="Paneer Manchurian" data-price="120">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="paneer tikka.jpg" alt="Paneer Tikka">
+                    <h3>Paneer Tikka</h3>
+                    <p>Price: 150 Rs</p>
+                    <button class="add-to-cart" data-name="Paneer Tikka" data-price="150">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="paneer burrito.jpg" alt="Paneer Burrito">
+                    <h3>Paneer Burrito</h3>
+                    <p>Price: 135 Rs</p>
+                    <button class="add-to-cart" data-name="Paneer Burrito" data-price="135">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="paneer cutlets.jpg" alt="Paneer cutlets">
+                    <h3>Paneer cutlets</h3>
+                    <p>Price: 110 Rs</p>
+                    <button class="add-to-cart" data-name="Paneer cutlet" data-price="110">Add to Cart</button>
+                </div>
+                <div class="dish">
+                    <img src="paneer sandwitch.jpg" alt="Paneer Sandwich">
+                    <h3>Paneer Sandwich</h3>
+                    <p>Price: 60 Rs</p>
+                    <button class="add-to-cart" data-name="Paneer Sandwich" data-price="60">Add to Cart</button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    
+        <!-- Checkout Container -->
+    <div id="checkout-container" style="display: none; border: 1px solid #ccc; padding: 20px; margin-top: 20px;">
+        <h3>Your Cart</h3>
+        <ul id="cart-items"></ul>
+        <p><strong>Total:</strong> ₹<span id="total-price">0</span></p>
+        <button onclick="checkout()">Proceed to Checkout</button>
+
+    </div>
+
+    
+    
+    <script>
+        const cart = [];
+
+        // Wait for the page to load
+        document.addEventListener("DOMContentLoaded", () => {
+            const buttons = document.querySelectorAll(".add-to-cart");
+
+            buttons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const name = button.getAttribute("data-name");
+                    const price = parseFloat(button.getAttribute("data-price"));
+
+                    const index = cart.findIndex(item => item.name === name);
+
+                    if (index === -1) {
+                        // Add to cart
+                        cart.push({ name, price });
+                        button.textContent = "Added";
+                        button.classList.add("selected");
+                    } else {
+                        // Remove from cart
+                        cart.splice(index, 1);
+                        button.textContent = "Add to Cart";
+                        button.classList.remove("selected");
+                    }
+
+                    updateCheckout();
+                });
+            });
+        });
+
+        // Show cart items and total price
+        function updateCheckout() {
+            const container = document.getElementById("checkout-container");
+            const itemsList = document.getElementById("cart-items");
+            const totalPriceEl = document.getElementById("total-price");
+
+            if (cart.length === 0) {
+                container.style.display = "none";
+                return;
+            }
+
+            container.style.display = "block";
+            itemsList.innerHTML = "";
+
+            let total = 0;
+
+            cart.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} - ₹${item.price}`;
+                itemsList.appendChild(li);
+                total += item.price;
+            });
+
+            totalPriceEl.textContent = total.toFixed(2);
+        }
+
+
+
+    </script>
+</body>
+</html>
